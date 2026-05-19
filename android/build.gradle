@@ -9,14 +9,14 @@ apply plugin: 'com.android.application'
 
 
 android {
-  namespace "com.politecnicomalaga.attack_on_coffee"
-  compileSdk 35
+  namespace = "com.politecnicomalaga.attackoncoffee"
+  compileSdk = 35
   sourceSets {
     main {
       manifest.srcFile 'AndroidManifest.xml'
-      java.setSrcDirs(['src/main/java'])
-      aidl.setSrcDirs(['src/main/java'])
-      renderscript.setSrcDirs(['src/main/java'])
+      java.setSrcDirs(['src/main/java', 'src/main/groovy'])
+      aidl.setSrcDirs(['src/main/java', 'src/main/groovy'])
+      renderscript.setSrcDirs(['src/main/java', 'src/main/groovy'])
       res.setSrcDirs(['res'])
       assets.setSrcDirs(['../assets'])
       jniLibs.setSrcDirs(['libs'])
@@ -31,21 +31,21 @@ android {
 		}
   }
   defaultConfig {
-    applicationId 'com.politecnicomalaga.attack_on_coffee'
+    applicationId 'com.politecnicomalaga.attackoncoffee'
     minSdkVersion 21
     targetSdkVersion 35
     versionCode 1
     versionName "1.0"
   }
   compileOptions {
-    sourceCompatibility "17"
-    targetCompatibility "17"
-    coreLibraryDesugaringEnabled true
+    sourceCompatibility "11"
+    targetCompatibility "11"
+    coreLibraryDesugaringEnabled = true
   }
   buildTypes {
     release {
       minifyEnabled true
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), 'proguard-rules.pro'
     }
   }
 }
@@ -127,7 +127,7 @@ tasks.register('run', Exec) {
   }
 
   def adb = path + "/platform-tools/adb"
-  commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.politecnicomalaga.attack_on_coffee/com.politecnicomalaga.attack_on_coffee.android.AndroidLauncher'
+  commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.politecnicomalaga.attackoncoffee/com.politecnicomalaga.attackoncoffee.android.AndroidLauncher'
 }
 
 eclipse.project.name = appName + "-android"

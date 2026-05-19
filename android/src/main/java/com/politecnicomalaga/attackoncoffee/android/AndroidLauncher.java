@@ -1,10 +1,10 @@
-package com.politecnicomalaga.attack_on_coffee.android;
+package com.politecnicomalaga.attackoncoffee.android;
 
 import android.os.Bundle;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import com.politecnicomalaga.attack_on_coffee.Main;
+import com.politecnicomalaga.attackoncoffee.Main;
 
 /** Launches the Android application. */
 public class AndroidLauncher extends AndroidApplication {
