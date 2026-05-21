@@ -37,9 +37,9 @@ public class MenuScreen extends ScreenAdapter {
     public void show(){
         background = new Texture("background.jpeg");
         startButton = new Texture("start.png");
-        camera = new OrthographicCamera(626,367);
+        camera = new OrthographicCamera(1280,720);
         batch = new SpriteBatch();
-        viewport = new StretchViewport(626,367,camera);
+        viewport = new StretchViewport(1280,720,camera);
 
         stage = new Stage(viewport, batch);
         Gdx.input.setInputProcessor(stage);
@@ -53,7 +53,7 @@ public class MenuScreen extends ScreenAdapter {
 
         start = new TextButton("", estilo);
 
-        start.setSize(200, 60);
+        start.setSize(400, 120);
 
         float posX = (viewport.getWorldWidth() / 2f) - (start.getWidth() / 2f);
         float posY = 80f;
@@ -81,7 +81,7 @@ public class MenuScreen extends ScreenAdapter {
         batch.setProjectionMatrix(camera.combined);
 
         batch.begin();
-        batch.draw(background, 0, 0, 626, 367);
+        batch.draw(background, 0, 0, 1280, 720);
         batch.end();
 
         stage.act(delta);
