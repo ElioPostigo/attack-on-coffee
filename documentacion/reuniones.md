@@ -45,3 +45,23 @@
 
 - Se detectaron y solucionaron errores presentes en la base inicial del proyecto.
 - Se rehízo parte de la estructura del proyecto para mejorar su funcionamiento y se subió a git.
+
+- # 📋 Reuniones
+
+---
+
+## 📅 21/05/2026
+
+> Reunión para reorganizar las fechas del proyecto y realizar un nuevo reparto de clases y tareas pendientes.
+
+| Miembro | Tareas realizadas |
+|---|---|
+| Elio | Reorganización de fechas del proyecto, reparto de clases y planificación de tareas pendientes |
+| Manu | Participación en la reorganización del proyecto y asignación de nuevas tareas |
+
+### ✅ Conclusiones
+
+- Se reorganizaron las fechas y planificación general del proyecto.
+- Manu realizará también la clase de entidad.
+- Damian se encargará de realizar los sprites; en caso de no estar terminados para el lunes, serán realizados por Elio.
+- Se acordó que, si algún miembro no completa sus clases asignadas para la fecha límite del proyecto, estas serán repartidas entre otros miembros del equipo para asegurar la finalización del proyecto.
