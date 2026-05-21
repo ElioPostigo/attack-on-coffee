@@ -23,12 +23,14 @@ android {
     }
   }
   packagingOptions {
-		resources {
-			excludes += ['META-INF/robovm/ios/robovm.xml', 'META-INF/DEPENDENCIES.txt', 'META-INF/DEPENDENCIES',
+    resources {
+      excludes += ['META-INF/robovm/ios/robovm.xml', 'META-INF/DEPENDENCIES.txt', 'META-INF/DEPENDENCIES',
                    'META-INF/dependencies.txt', '**/*.gwt.xml']
-			pickFirsts += ['META-INF/LICENSE.txt', 'META-INF/LICENSE', 'META-INF/license.txt', 'META-INF/LGPL2.1',
+      pickFirsts += ['META-INF/LICENSE.txt', 'META-INF/LICENSE', 'META-INF/license.txt', 'META-INF/LGPL2.1',
                      'META-INF/NOTICE.txt', 'META-INF/NOTICE', 'META-INF/notice.txt']
-		}
+      // Excluir el archivo duplicado de jline
+      exclude 'org/jline/utils/rxvt.caps'
+    }
   }
   defaultConfig {
     applicationId 'com.politecnicomalaga.attackoncoffee'
@@ -57,24 +59,63 @@ repositories {
 
 configurations { natives }
 
+configurations.all {
+  exclude group: "org.jline", module: "jansi"
+  exclude group: "org.jline", module: "jline"
+  exclude group: "org.jline", module: "jline-terminal"
+  exclude group: "org.jline", module: "jline-native"
+  exclude group: "org.jline", module: "jline-terminal-jni"
+}
+
 dependencies {
   coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
-  implementation "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
+
+  // Excluir jline de todas las dependencias de libGDX
+  implementation("com.badlogicgames.gdx:gdx-backend-android:$gdxVersion") {
+    exclude group: "org.jline", module: "jansi"
+    exclude group: "org.jline", module: "jline-terminal"
+    exclude group: "org.jline", module: "jline-native"
+    exclude group: "org.jline", module: "jline-terminal-jni"
+  }
+
   implementation project(':core')
 
-  natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-arm64-v8a"
-  natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi-v7a"
-  natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86"
-  natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86_64"
-  natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-arm64-v8a"
-  natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi-v7a"
-  natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86"
-  natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86_64"
-  natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a"
-  natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
-  natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
-  natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
-
+  natives("com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-arm64-v8a") {
+    exclude group: "org.jline"
+  }
+  natives("com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi-v7a") {
+    exclude group: "org.jline"
+  }
+  natives("com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86") {
+    exclude group: "org.jline"
+  }
+  natives("com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86_64") {
+    exclude group: "org.jline"
+  }
+  natives("com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-arm64-v8a") {
+    exclude group: "org.jline"
+  }
+  natives("com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi-v7a") {
+    exclude group: "org.jline"
+  }
+  natives("com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86") {
+    exclude group: "org.jline"
+  }
+  natives("com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86_64") {
+    exclude group: "org.jline"
+  }
+  natives("com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a") {
+    exclude group: "org.jline"
+  }
+  natives("com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a") {
+    exclude group: "org.jline"
+  }
+  natives("com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86") {
+    exclude group: "org.jline"
+  }
+  natives("com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64") {
+    exclude group: "org.jline"
+  }
 }
 
 // Called every time gradle gets executed, takes the native dependencies of
