@@ -29,10 +29,6 @@
 
 ---
 
-# 📋 Reuniones
-
----
-
 ## 📅 19/05/2026
 
 > Reunión centrada en la resolución de errores de la base del proyecto.
@@ -45,8 +41,6 @@
 
 - Se detectaron y solucionaron errores presentes en la base inicial del proyecto.
 - Se rehízo parte de la estructura del proyecto para mejorar su funcionamiento y se subió a git.
-
-- # 📋 Reuniones
 
 ---
 
