@@ -1,39 +1,31 @@
 package com.politecnicomalaga.attack_on_coffee.model;
-import java.util.ArrayList;
 
-public class filaClientes {
+public class FilaClientes {
 
-    private ArrayList<Cliente> clientes;
-    private int velocidadHorizontal;
-    private boolean moviendoDerecha;
+    private Cliente[] clientes;
+    private float velocidad;
 
-    public FilaClientes(int velocidadHorizontal) {
-        this.clientes = new ArrayList<>();
-        this.velocidadHorizontal = velocidadHorizontal;
-        this.moviendoDerecha = true;
+    public FilaClientes(Cliente[] clientes, float velocidad) {
+        this.clientes = clientes;
+        this.velocidad = velocidad;
     }
 
-    public void agregarCliente(Cliente cliente) {
-        clientes.add(cliente);
-    }
+    public void moverHorizontal(float delta) {
 
-    public void moverHorizontal() {
+        for (Cliente c : clientes) {
 
-        for (Cliente cliente : clientes) {
+            if (c != null && c.isVivo()) {
 
-            if (moviendoDerecha) {
-                cliente.setX(cliente.getX() + velocidadHorizontal);
-            } else {
-                cliente.setX(cliente.getX() - velocidadHorizontal);
+                c.moverHorizontal(velocidad * delta);
             }
         }
     }
 
-    public void cambiarDireccion() {
-        moviendoDerecha = !moviendoDerecha;
+    public Cliente[] getClientes() {
+        return clientes;
     }
 
-    public ArrayList<Cliente> getClientes() {
-        return clientes;
+    public void setClientes(Cliente[] clientes) {
+        this.clientes = clientes;
     }
 }
