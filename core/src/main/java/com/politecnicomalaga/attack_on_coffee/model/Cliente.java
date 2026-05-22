@@ -1,17 +1,50 @@
 package com.politecnicomalaga.attack_on_coffee.model;
 
+import com.badlogic.gdx.graphics.Texture;
+
+import java.util.ArrayList;
+
 public class Cliente extends Persona {
 
-    public Cliente(int x, int y, int vida, int velocidad) {
-        super(x, y, vida, velocidad);
+    private boolean vivo;
+    private ArrayList<Queja> quejas;
+
+    public Cliente(Texture img, float x, float y) {
+        super(img, x, y);
+
+        this.vivo = true;
+        this.quejas = new ArrayList<>();
     }
 
-    @Override
-    public void mover() {
-        x += velocidad;
+    public void lanzarQueja(Texture texturaQueja) {
+
+        Queja q = new Queja(
+            texturaQueja,
+            getSprite().getX(),
+            getSprite().getY()
+        );
+
+        quejas.add(q);
     }
 
-    public Queja lanzarQueja() {
-        return new Queja(x, y);
+    public void morir() {
+        vivo = false;
+        setActivo(false);
+    }
+
+    public boolean isVivo() {
+        return vivo;
+    }
+
+    public void setVivo(boolean vivo) {
+        this.vivo = vivo;
+    }
+
+    public ArrayList<Queja> getQuejas() {
+        return quejas;
+    }
+
+    public void setQuejas(ArrayList<Queja> quejas) {
+        this.quejas = quejas;
     }
 }
