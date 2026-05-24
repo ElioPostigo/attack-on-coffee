@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
 public abstract class Entidad {
-    private float x,y;
     private Rectangle hitbox;
     private Sprite sprite;
     private boolean activo;
@@ -19,27 +18,11 @@ public abstract class Entidad {
     }
 
     public void draw(SpriteBatch batch){
-        sprite.draw(batch);
+        if(activo)sprite.draw(batch);
     }
 
-    public void updateHitbox(float delta){
+    public void updatePosition(float delta){
         hitbox.setPosition(sprite.getX(),sprite.getY());
-    }
-
-    public float getX() {
-        return x;
-    }
-
-    public void setX(float x) {
-        this.x = x;
-    }
-
-    public float getY() {
-        return y;
-    }
-
-    public void setY(float y) {
-        this.y = y;
     }
 
     public Rectangle getHitbox() {
@@ -64,5 +47,11 @@ public abstract class Entidad {
 
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+
+    public void dispose(){
+        if (sprite != null && sprite.getTexture() != null) {
+            sprite.getTexture().dispose();
+        }
     }
 }
