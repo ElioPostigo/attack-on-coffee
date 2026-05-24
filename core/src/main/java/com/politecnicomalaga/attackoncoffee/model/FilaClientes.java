@@ -1,13 +1,30 @@
 package com.politecnicomalaga.attackoncoffee.model;
 
-public class FilaClientes {
+import com.badlogic.gdx.graphics.Texture;
+
+public class filaClientes {
 
     private final float velocidad;
     private Cliente[] clientes;
 
-    public FilaClientes(Cliente[] clientes, float velocidad) {
-        this.clientes = clientes;
+    public filaClientes(
+        int cantidad,
+        Texture textura,
+        float xInicial,
+        float y,
+        float separacion,
+        float velocidad
+    ) {
+
         this.velocidad = velocidad;
+        this.clientes = new Cliente[cantidad];
+
+        for (int i = 0; i < cantidad; i++) {
+
+            float x = xInicial + (i * separacion);
+
+            clientes[i] = new Cliente(textura, x, y);
+        }
     }
 
     public void moverHorizontal(float delta) {
@@ -16,16 +33,12 @@ public class FilaClientes {
 
             if (c != null && c.isActivo()) {
 
-//                c.moverHorizontal(velocidad * delta);
+                c.moverHorizontal(velocidad * delta);
             }
         }
     }
 
     public Cliente[] getClientes() {
         return clientes;
-    }
-
-    public void setClientes(Cliente[] clientes) {
-        this.clientes = clientes;
     }
 }
