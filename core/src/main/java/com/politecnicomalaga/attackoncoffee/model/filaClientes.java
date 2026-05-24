@@ -14,7 +14,7 @@ public class filaClientes {
 
         for (Cliente c : clientes) {
 
-            if (c != null && c.isVivo()) {
+            if (c != null && c.isActivo()) {
 
                 c.moverHorizontal(velocidad * delta);
             }
