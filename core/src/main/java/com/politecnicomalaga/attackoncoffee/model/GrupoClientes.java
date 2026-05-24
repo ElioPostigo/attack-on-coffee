@@ -1,25 +1,20 @@
 package com.politecnicomalaga.attackoncoffee.model;
 
-public class grupoClientes {
+public class GrupoClientes {
 
-    private filaClientes[] filas;
-    private float velocidadVertical;
+    private final float velocidadVertical;
+    private FilaClientes[] filas;
 
-    public grupoClientes(filaClientes[] filas, float velocidadVertical) {
+    public GrupoClientes(FilaClientes[] filas, float velocidadVertical) {
         this.filas = filas;
         this.velocidadVertical = velocidadVertical;
     }
 
     public void moverVertical(float delta) {
-
-        for (filaClientes fila : filas) {
-
+        for (FilaClientes fila : filas) {
             if (fila != null) {
-
                 for (Cliente c : fila.getClientes()) {
-
                     if (c != null && c.isActivo()) {
-
                         c.getSprite().translateY(-velocidadVertical * delta);
                         c.updatePosition(delta);
                     }
@@ -28,11 +23,11 @@ public class grupoClientes {
         }
     }
 
-    public filaClientes[] getFilas() {
+    public FilaClientes[] getFilas() {
         return filas;
     }
 
-    public void setFilas(filaClientes[] filas) {
+    public void setFilas(FilaClientes[] filas) {
         this.filas = filas;
     }
 }

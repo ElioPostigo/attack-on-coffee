@@ -1,11 +1,11 @@
 package com.politecnicomalaga.attackoncoffee.model;
 
-public class filaClientes {
+public class FilaClientes {
 
+    private final float velocidad;
     private Cliente[] clientes;
-    private float velocidad;
 
-    public filaClientes(Cliente[] clientes, float velocidad) {
+    public FilaClientes(Cliente[] clientes, float velocidad) {
         this.clientes = clientes;
         this.velocidad = velocidad;
     }
@@ -16,7 +16,7 @@ public class filaClientes {
 
             if (c != null && c.isActivo()) {
 
-                c.moverHorizontal(velocidad * delta);
+//                c.moverHorizontal(velocidad * delta);
             }
         }
     }
