@@ -1,18 +1,14 @@
-package com.politecnicomalaga.attack_on_coffee.model;
+package com.politecnicomalaga.attackoncoffee.model;
 
 import com.badlogic.gdx.graphics.Texture;
 
 import java.util.ArrayList;
 
-public class Cliente extends Persona {
-
-    private boolean vivo;
+public class Cliente extends Entidad {
     private ArrayList<Queja> quejas;
 
     public Cliente(Texture img, float x, float y) {
         super(img, x, y);
-
-        this.vivo = true;
         this.quejas = new ArrayList<>();
     }
 
@@ -25,19 +21,6 @@ public class Cliente extends Persona {
         );
 
         quejas.add(q);
-    }
-
-    public void morir() {
-        vivo = false;
-        setActivo(false);
-    }
-
-    public boolean isVivo() {
-        return vivo;
-    }
-
-    public void setVivo(boolean vivo) {
-        this.vivo = vivo;
     }
 
     public ArrayList<Queja> getQuejas() {
