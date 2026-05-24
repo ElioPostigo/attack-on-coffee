@@ -59,3 +59,29 @@
 - Manu realizará también la clase de entidad.
 - Damian se encargará de realizar los sprites; en caso de no estar terminados para el lunes, serán realizados por Elio.
 - Se acordó que, si algún miembro no completa sus clases asignadas para la fecha límite del proyecto, estas serán repartidas entre otros miembros del equipo para asegurar la finalización del proyecto.
+
+- # 📋 Reuniones
+
+---
+
+## 📅 24/05/2026
+
+> Reunión realizada para revisar el estado de las clases, organizar tareas pendientes y comprobar el progreso general del equipo. Además, fuera de reunión se realizaron preguntas de seguimiento para revisar el avance individual de los miembros.
+
+| Miembro | Tareas realizadas |
+|---|---|
+| Elio | Revisión y corrección de código, integración de contenido finalizado en la rama develop y organización general del proyecto |
+| Manu | Apoyo en la revisión de código y colaboración en la comprobación del estado actual del proyecto |
+
+### ✅ Conclusiones
+
+- Se revisó el progreso actual del proyecto y el estado de las clases realizadas por cada miembro.
+- Se arreglo errores de codigos y se juntaron las clases en develop.
+
+#### Estado actual de los miembros
+
+- **Elio:** ha realizado `cliente`, `filaClientes` y `grupoClientes`. También se ha encargado de revisar y arreglar código, organizar el proyecto y fusionar el trabajo realizado en Git.
+- **Manu:** ha realizado `inicio`, `muerte` y `entidad`. Además, ha ayudado en la revisión de código y colaborará con Javi en la realización de `juego`.
+- **Javi:** comenzará el desarrollo de `juego`.
+- **Mariano:** ha realizado `accion` y realizará `cafe`. Tiene pendiente también la clase `queja`.
+- **Damian:** está realizando los sprites y tiene pendientes las clases `persona` y `barista`.
