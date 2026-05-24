@@ -11,6 +11,21 @@ public class grupoClientes {
     }
 
     public void moverVertical(float delta) {
+
+        for (filaClientes fila : filas) {
+
+            if (fila != null) {
+
+                for (Cliente c : fila.getClientes()) {
+
+                    if (c != null && c.isVivo()) {
+
+                        c.getSprite().translateY(-velocidadVertical * delta);
+                        c.updateHitbox(delta);
+                    }
+                }
+            }
+        }
     }
 
     public filaClientes[] getFilas() {
