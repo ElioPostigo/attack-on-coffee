@@ -1,7 +1,7 @@
-package com.politecnicomalaga.attack_on_coffee.model;
+package com.politecnicomalaga.attackoncoffee.model;
 
 import com.badlogic.gdx.graphics.Texture;
-public abstract class Accion {
+public abstract class Accion extends Entidad{
     private float velocidad;
     //Para Controlar si ha impactado el proyectil/accion/bala/ataque y etc
     private boolean impactado;
@@ -27,3 +27,4 @@ public abstract class Accion {
         if(impactado)setActivo(false);
     }
 }
+
