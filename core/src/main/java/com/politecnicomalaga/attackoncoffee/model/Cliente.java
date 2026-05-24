@@ -13,7 +13,6 @@ public class Cliente extends Entidad {
     }
 
     public void lanzarQueja(Texture texturaQueja) {
-
         Queja q = new Queja(
             texturaQueja,
             getSprite().getX(),
