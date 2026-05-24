@@ -18,10 +18,10 @@ public class grupoClientes {
 
                 for (Cliente c : fila.getClientes()) {
 
-                    if (c != null && c.isVivo()) {
+                    if (c != null && c.isActivo()) {
 
                         c.getSprite().translateY(-velocidadVertical * delta);
-                        c.updateHitbox(delta);
+                        c.updatePosition(delta);
                     }
                 }
             }
