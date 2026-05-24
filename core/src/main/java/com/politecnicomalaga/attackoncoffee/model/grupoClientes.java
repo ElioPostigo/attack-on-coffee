@@ -1,4 +1,4 @@
-package com.politecnicomalaga.attack_on_coffee.model;
+package com.politecnicomalaga.attackoncoffee.model;
 
 public class grupoClientes {
 

@@ -1,11 +1,11 @@
-package com.politecnicomalaga.attack_on_coffee.model;
+package com.politecnicomalaga.attackoncoffee.model;
 
-public class FilaClientes {
+public class filaClientes {
 
     private Cliente[] clientes;
     private float velocidad;
 
-    public FilaClientes(Cliente[] clientes, float velocidad) {
+    public filaClientes(Cliente[] clientes, float velocidad) {
         this.clientes = clientes;
         this.velocidad = velocidad;
     }
