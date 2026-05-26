@@ -14,7 +14,7 @@ public abstract class Accion extends Entidad{
     public float getVelocidad(){
         return velocidad;
     }
-    public void setVelocidad(){
+    public void setVelocidad(float velocidad){
         this.velocidad=velocidad;
     }
 }
