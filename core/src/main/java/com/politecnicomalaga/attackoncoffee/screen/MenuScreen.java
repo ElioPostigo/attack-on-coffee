@@ -1,6 +1,7 @@
 package com.politecnicomalaga.attackoncoffee.screen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -14,8 +15,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.politecnicomalaga.attackoncoffee.*;
-import com.badlogic.gdx.ScreenAdapter;
+import com.politecnicomalaga.attackoncoffee.Main;
+import com.politecnicomalaga.attackoncoffee.manager.SettingsManager;
 
 public class MenuScreen extends ScreenAdapter {
     private final Main game;
@@ -29,17 +30,17 @@ public class MenuScreen extends ScreenAdapter {
     private Stage stage;
     private BitmapFont font;
 
-    public MenuScreen(Main game){
+    public MenuScreen(Main game) {
         this.game = game;
     }
 
     @Override
-    public void show(){
+    public void show() {
         background = new Texture("background.jpeg");
         startButton = new Texture("start.png");
-        camera = new OrthographicCamera(1280,720);
+        camera = new OrthographicCamera(SettingsManager.SCREEN_WIDTH, SettingsManager.SCREEN_HEIGHT);
         batch = new SpriteBatch();
-        viewport = new StretchViewport(1280,720,camera);
+        viewport = new StretchViewport(SettingsManager.SCREEN_WIDTH, SettingsManager.SCREEN_HEIGHT, camera);
 
         stage = new Stage(viewport, batch);
         Gdx.input.setInputProcessor(stage);
@@ -73,7 +74,7 @@ public class MenuScreen extends ScreenAdapter {
     }
 
     @Override
-    public void render(float delta){
+    public void render(float delta) {
         // Limpiar pantalla de forma moderna
         ScreenUtils.clear(0, 0, 0, 1);
 
@@ -81,7 +82,7 @@ public class MenuScreen extends ScreenAdapter {
         batch.setProjectionMatrix(camera.combined);
 
         batch.begin();
-        batch.draw(background, 0, 0, 1280, 720);
+        batch.draw(background, 0, 0, SettingsManager.SCREEN_WIDTH, SettingsManager.SCREEN_HEIGHT);
         batch.end();
 
         stage.act(delta);
