@@ -2,6 +2,8 @@ package com.politecnicomalaga.attackoncoffee.model;
 
 import com.badlogic.gdx.graphics.Texture;
 
+import java.util.ArrayList;
+
 public class Cliente extends Entidad {
     private ArrayList<Queja> quejas;
 
