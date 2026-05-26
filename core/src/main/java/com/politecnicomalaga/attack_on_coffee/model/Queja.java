@@ -6,7 +6,7 @@ public class Queja extends Accion {
 
     //La velocidad se puede modificar, podemos hacer fija cambiando la variable velocidad por un numero
     //O dejarla asi para cuando queramos subirle la dificultad dependiendo el nivel
-    public Cafe(Texture img, float x, float y, float velocidad) {
+    public Queja(Texture img, float x, float y, float velocidad) {
         super(img, x, y, velocidad);
     }
 
