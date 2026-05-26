@@ -1,5 +1,6 @@
 package com.politecnicomalaga.attackoncoffee.model;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
 public class Queja extends Accion {

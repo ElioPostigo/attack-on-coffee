@@ -33,7 +33,7 @@ public class filaClientes {
 
             if (c != null && c.isActivo()) {
 
-                c.moverHorizontal(velocidad * delta);
+                moverHorizontal(velocidad * delta);
             }
         }
     }

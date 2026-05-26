@@ -16,12 +16,12 @@ public class Cliente extends Entidad {
         Queja q = new Queja(
             texturaQueja,
             getSprite().getX(),
-            getSprite().getY()
+            getSprite().getY(),
+            200
         );
 
         quejas.add(q);
     }
-
     public ArrayList<Queja> getQuejas() {
         return quejas;
     }

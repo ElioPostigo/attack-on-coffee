@@ -1,8 +1,9 @@
 package com.politecnicomalaga.attackoncoffee.model;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 public class Cafe extends Accion {
-    public class Cafe(Texture img, float x, float y, float velocidad){
-        super(img,x,y,velocidad);
+    public Cafe(Texture img, float x, float y, float velocidad) {
+        super(img, x, y, velocidad);
     }
 
     //Esto es para que la bala amiga suba hacia arriba
