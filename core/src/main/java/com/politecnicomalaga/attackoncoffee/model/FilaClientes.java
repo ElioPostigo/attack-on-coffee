@@ -8,13 +8,12 @@ public class FilaClientes {
     private final Cliente[] clientes;
 
     public FilaClientes(
-        int cantidad,
-        Texture textura,
-        float xInicial,
-        float y,
-        float separacion,
-        float velocidad
-    ) {
+            int cantidad,
+            Texture textura,
+            float xInicial,
+            float y,
+            float separacion,
+            float velocidad) {
 
         this.velocidad = velocidad;
         this.clientes = new Cliente[cantidad];
@@ -33,7 +32,7 @@ public class FilaClientes {
 
             if (c != null && c.isActivo()) {
 
-//                c.moverHorizontal(velocidad * delta);
+                moverHorizontal(velocidad * delta);
             }
         }
     }
