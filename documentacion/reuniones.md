@@ -85,3 +85,22 @@
 - **Javi:** comenzará el desarrollo de `juego`.
 - **Mariano:** ha realizado `accion` y realizará `cafe`. Tiene pendiente también la clase `queja`.
 - **Damian:** está realizando los sprites y tiene pendientes las clases `persona` y `barista`.
+
+# 📋 Reuniones
+
+---
+
+## 📅 26/05/2026
+
+> Reunión realizada para revisar el nuevo código añadido al proyecto, analizar errores detectados y comprobar el estado de integración de las clases desarrolladas.
+
+| Miembro | Tareas realizadas |
+|---|---|
+| Elio | Revisión y corrección de errores, integración del nuevo código en develop y revisión de la clase `juego` |
+| Manu | Apoyo en la revisión del código, análisis de errores y comprobación del funcionamiento de las nuevas clases |
+
+### ✅ Conclusiones
+
+- Se analizaron y corrigieron errores detectados en el proyecto.
+- Las clases `cafe` y `queja` ya han sido integradas en la rama `develop`.
+- Se realizó una revisión del código de la clase `juego` desarrollada por Javi.
