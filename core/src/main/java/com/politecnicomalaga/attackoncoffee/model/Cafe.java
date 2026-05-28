@@ -10,7 +10,7 @@ public class Cafe extends Accion {
     @Override
     public void mover(){
         getSprite().translateY(getVelocidad() * Gdx.graphics.getDeltaTime());
-        updatePosition(0);
+        updatePosition(Gdx.graphics.getDeltaTime());
 
         //Ejemplo de que pasa si sale de la pantalla
         if(getSprite().getY()>720){
