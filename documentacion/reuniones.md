@@ -60,8 +60,6 @@
 - Damian se encargará de realizar los sprites; en caso de no estar terminados para el lunes, serán realizados por Elio.
 - Se acordó que, si algún miembro no completa sus clases asignadas para la fecha límite del proyecto, estas serán repartidas entre otros miembros del equipo para asegurar la finalización del proyecto.
 
-- # 📋 Reuniones
-
 ---
 
 ## 📅 24/05/2026
@@ -86,8 +84,6 @@
 - **Mariano:** ha realizado `accion` y realizará `cafe`. Tiene pendiente también la clase `queja`.
 - **Damian:** está realizando los sprites y tiene pendientes las clases `persona` y `barista`.
 
-# 📋 Reuniones
-
 ---
 
 ## 📅 26/05/2026
@@ -104,8 +100,6 @@
 - Se analizaron y corrigieron errores detectados en el proyecto.
 - Las clases `cafe` y `queja` ya han sido integradas en la rama `develop`.
 - Se realizó una revisión del código de la clase `juego` desarrollada por Javi.
-
-- # 📋 Reuniones
 
 ---
 
