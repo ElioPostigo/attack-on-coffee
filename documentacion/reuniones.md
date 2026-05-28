@@ -104,3 +104,25 @@
 - Se analizaron y corrigieron errores detectados en el proyecto.
 - Las clases `cafe` y `queja` ya han sido integradas en la rama `develop`.
 - Se realizó una revisión del código de la clase `juego` desarrollada por Javi.
+
+- # 📋 Reuniones
+
+---
+
+## 📅 28/05/2026
+
+> Reunión realizada para organizar la última fase del proyecto y repartir las tareas finales necesarias para completar el desarrollo.
+
+| Miembro | Tareas realizadas |
+|---|---|
+| Elio | Organización de tareas finales|
+| Javi, Manu, Mariano | Planificación de sus tareas pendientes |
+
+### ✅ Conclusiones
+
+- Damian ha sido expulsado del proyecto tras varias semanas sin responder y sin entregar avances de las tareas asignadas.
+- Mariano realizará la clase `persona`.
+- Javi realizará la clase `barista`.
+- Manu se encargará de agregar música y pulir el código del proyecto.
+- Elio realizará los sprites y el resto del apartado artístico.
+- Se reorganizaron las tareas restantes para asegurar la finalización del proyecto dentro de la fecha prevista.
