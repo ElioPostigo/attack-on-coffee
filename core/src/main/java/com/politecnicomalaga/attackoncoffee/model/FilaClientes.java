@@ -2,19 +2,18 @@ package com.politecnicomalaga.attackoncoffee.model;
 
 import com.badlogic.gdx.graphics.Texture;
 
-public class filaClientes {
+public class FilaClientes {
 
-    private Cliente[] clientes;
-    private float velocidad;
+    private final float velocidad;
+    private final Cliente[] clientes;
 
-    public filaClientes(
-        int cantidad,
-        Texture textura,
-        float xInicial,
-        float y,
-        float separacion,
-        float velocidad
-    ) {
+    public FilaClientes(
+            int cantidad,
+            Texture textura,
+            float xInicial,
+            float y,
+            float separacion,
+            float velocidad) {
 
         this.velocidad = velocidad;
         this.clientes = new Cliente[cantidad];

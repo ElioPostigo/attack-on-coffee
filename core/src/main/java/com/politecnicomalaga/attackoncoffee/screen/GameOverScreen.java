@@ -1,7 +1,6 @@
 package com.politecnicomalaga.attackoncoffee.screen;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -10,22 +9,23 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.politecnicomalaga.attackoncoffee.Main;
+import com.politecnicomalaga.attackoncoffee.manager.SettingsManager;
 
-public class GameOver extends ScreenAdapter {
+public class GameOverScreen extends ScreenAdapter {
     private final Main game;
     private Texture gameOver;
     private SpriteBatch batch;
     private OrthographicCamera camera;
     private Viewport viewport;
 
-    public GameOver(Main game) {
+    public GameOverScreen(Main game) {
         this.game = game;
     }
 
     @Override
-    public void show(){
-        camera = new OrthographicCamera(1280,720);
-        viewport = new StretchViewport(1280,720,camera);
+    public void show() {
+        camera = new OrthographicCamera(SettingsManager.SCREEN_WIDTH, SettingsManager.SCREEN_HEIGHT);
+        viewport = new StretchViewport(SettingsManager.SCREEN_WIDTH, SettingsManager.SCREEN_HEIGHT, camera);
         gameOver = new Texture("gameOver.png");
         batch = new SpriteBatch();
     }
@@ -38,10 +38,10 @@ public class GameOver extends ScreenAdapter {
         batch.setProjectionMatrix(camera.combined);
 
         batch.begin();
-        batch.draw(gameOver,0,0);
+        batch.draw(gameOver, 0, 0);
         batch.end();
 
-        if(Gdx.input.isTouched()){
+        if (Gdx.input.isTouched()) {
             game.setScreen(new MenuScreen(game));
         }
     }
@@ -52,7 +52,7 @@ public class GameOver extends ScreenAdapter {
     }
 
     @Override
-    public void dispose(){
+    public void dispose() {
         gameOver.dispose();
     }
 }

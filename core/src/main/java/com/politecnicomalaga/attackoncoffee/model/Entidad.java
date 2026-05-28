@@ -10,19 +10,19 @@ public abstract class Entidad {
     private Sprite sprite;
     private boolean activo;
 
-    public Entidad(Texture img,float x, float y){
+    public Entidad(Texture img, float x, float y) {
         this.sprite = new Sprite(img);
-        this.sprite.setPosition(x,y);
-        this.hitbox = new Rectangle(x,y,sprite.getWidth(),sprite.getHeight());
+        this.sprite.setPosition(x, y);
+        this.hitbox = new Rectangle(x, y, sprite.getWidth(), sprite.getHeight());
         this.activo = true;
     }
 
-    public void draw(SpriteBatch batch){
-        if(activo)sprite.draw(batch);
+    public void draw(SpriteBatch batch) {
+        if (activo) sprite.draw(batch);
     }
 
-    public void updatePosition(float delta){
-        hitbox.setPosition(sprite.getX(),sprite.getY());
+    public void updatePosition(float delta) {
+        hitbox.setPosition(sprite.getX(), sprite.getY());
     }
 
     public Rectangle getHitbox() {
@@ -49,7 +49,7 @@ public abstract class Entidad {
         this.activo = activo;
     }
 
-    public void dispose(){
+    public void dispose() {
         if (sprite != null && sprite.getTexture() != null) {
             sprite.getTexture().dispose();
         }
