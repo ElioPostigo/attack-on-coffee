@@ -38,7 +38,7 @@ public class GameScreen extends ScreenAdapter {
         }
 
         barista.render();
-        grupoClientes.moverVertical(delta);
+        grupoClientes.mover(delta);
         grupoClientes.render();
     }
 }

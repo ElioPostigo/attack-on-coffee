@@ -4,8 +4,8 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class GrupoClientes {
 
-    private final FilaClientes[] filas;
-    private final float velocidadVertical;
+    private FilaClientes[] filas;
+    private float velocidadVertical;
 
     public GrupoClientes(
         int numFilas,
@@ -38,18 +38,36 @@ public class GrupoClientes {
         }
     }
 
-    public void moverVertical(float delta) {
+    public void mover(float delta) {
 
+        boolean bajar = false;
+
+        // Movimiento horizontal
         for (FilaClientes fila : filas) {
 
             if (fila != null) {
 
-                for (Cliente c : fila.getClientes()) {
+                if (fila.moverHorizontal(delta)) {
+                    bajar = true;
+                }
+            }
+        }
 
-                    if (c != null && c.isActivo()) {
+        // Movimiento vertical al tocar borde
+        if (bajar) {
 
-                        c.getSprite().translateY(-velocidadVertical * delta);
-                        c.updatePosition(delta);
+            for (FilaClientes fila : filas) {
+
+                if (fila != null) {
+
+                    for (Cliente c : fila.getClientes()) {
+
+                        if (c != null && c.isActivo()) {
+
+                            c.getSprite().translateY(-velocidadVertical);
+
+                            c.updatePosition(delta);
+                        }
                     }
                 }
             }
