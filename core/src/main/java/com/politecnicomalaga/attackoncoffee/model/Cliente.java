@@ -12,16 +12,17 @@ public class Cliente extends Entidad {
         this.quejas = new ArrayList<>();
     }
 
+    //Los clientes lanzan proyectiles, este metodo crea proyectiles
     public void lanzarQueja(Texture texturaQueja) {
         Queja q = new Queja(
-            texturaQueja,
-            getSprite().getX(),
-            getSprite().getY(),
-            200
-        );
+                texturaQueja,
+                getSprite().getX(),
+                getSprite().getY(),
+                200);
 
         quejas.add(q);
     }
+
     public ArrayList<Queja> getQuejas() {
         return quejas;
     }
