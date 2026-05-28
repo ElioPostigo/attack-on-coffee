@@ -22,14 +22,5 @@ public abstract class Accion extends Entidad {
         this.velocidad = velocidad;
     }
 
-    public boolean getImpactado() {
-        return impactado;
-    }
-
     // Si al final la proyectil/accion/bala/ataque impacta al objetivo se desactiva
-    public void setImpactado() {
-        this.impactado = impactado;
-        if (impactado)
-            setActivo(false);
-    }
 }
