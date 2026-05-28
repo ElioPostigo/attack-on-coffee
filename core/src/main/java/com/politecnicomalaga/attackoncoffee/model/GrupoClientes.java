@@ -2,12 +2,12 @@ package com.politecnicomalaga.attackoncoffee.model;
 
 import com.badlogic.gdx.graphics.Texture;
 
-public class grupoClientes {
+public class GrupoClientes {
 
-    private filaClientes[] filas;
+    private FilaClientes[] filas;
     private float velocidadVertical;
 
-    public grupoClientes(
+    public GrupoClientes(
         int numFilas,
         int clientesPorFila,
         Texture textura,
@@ -21,13 +21,13 @@ public class grupoClientes {
 
         this.velocidadVertical = velocidadVertical;
 
-        filas = new filaClientes[numFilas];
+        filas = new FilaClientes[numFilas];
 
         for (int i = 0; i < numFilas; i++) {
 
             float y = yInicial - (i * separacionVertical);
 
-            filas[i] = new filaClientes(
+            filas[i] = new FilaClientes(
                 clientesPorFila,
                 textura,
                 xInicial,
@@ -38,26 +38,43 @@ public class grupoClientes {
         }
     }
 
-    public void moverVertical(float delta) {
+    public void mover(float delta) {
 
-        for (filaClientes fila : filas) {
+        boolean bajar = false;
+
+        // Movimiento horizontal
+        for (FilaClientes fila : filas) {
 
             if (fila != null) {
 
-                for (Cliente c : fila.getClientes()) {
+                if (fila.moverHorizontal(delta)) {
+                    bajar = true;
+                }
+            }
+        }
 
-                    if (c != null && c.isActivo()) {
+        // Movimiento vertical al tocar borde
+        if (bajar) {
 
-                        c.getSprite().translateY(-velocidadVertical * delta);
+            for (FilaClientes fila : filas) {
 
-                        c.updatePosition(delta);
+                if (fila != null) {
+
+                    for (Cliente c : fila.getClientes()) {
+
+                        if (c != null && c.isActivo()) {
+
+                            c.getSprite().translateY(-velocidadVertical);
+
+                            c.updatePosition(delta);
+                        }
                     }
                 }
             }
         }
     }
 
-    public filaClientes[] getFilas() {
+    public FilaClientes[] getFilas() {
         return filas;
     }
 }
