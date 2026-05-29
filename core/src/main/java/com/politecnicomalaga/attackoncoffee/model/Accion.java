@@ -3,6 +3,7 @@ package com.politecnicomalaga.attackoncoffee.model;
 import com.badlogic.gdx.graphics.Texture;
 
 public abstract class Accion extends Entidad {
+
     private float velocidad;
 
     // Para Controlar si ha impactado el proyectil/accion/bala/ataque y etc
