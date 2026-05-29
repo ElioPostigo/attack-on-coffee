@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
 public abstract class Entidad {
+
     private Rectangle hitbox;
     private Sprite sprite;
     private boolean activo;

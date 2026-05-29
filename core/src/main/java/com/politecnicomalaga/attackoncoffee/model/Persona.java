@@ -6,15 +6,8 @@ public abstract class Persona extends Entidad {
 
     private float velocidad;
 
-    public Persona(
-        Texture img,
-        float x,
-        float y,
-        float velocidad
-    ) {
-
+    public Persona(Texture img, float x, float y, float velocidad) {
         super(img, x, y);
-
         this.velocidad = velocidad;
     }
 
