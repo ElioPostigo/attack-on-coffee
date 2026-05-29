@@ -6,12 +6,12 @@ public class FilaClientes {
 
     private final Cliente[] clientes;
 
-    public FilaClientes(int cantidad, Texture textura, float xInicial, float y, float separacion) {
+    public FilaClientes(int cantidad, Texture textura, float xInicial, float y, float separacion,int puntos) {
         clientes = new Cliente[cantidad];
 
         for (int i = 0; i < cantidad; i++) {
             float x = xInicial + (i * separacion);
-            clientes[i] = new Cliente(textura, x, y);
+            clientes[i] = new Cliente(textura, x, y,puntos);
         }
     }
 

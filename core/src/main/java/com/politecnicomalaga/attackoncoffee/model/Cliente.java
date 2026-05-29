@@ -7,10 +7,12 @@ import java.util.ArrayList;
 public class Cliente extends Entidad {
 
     private ArrayList<Queja> quejas;
+    private int puntos;
 
-    public Cliente(Texture img, float x, float y) {
+    public Cliente(Texture img, float x, float y,int puntos) {
         super(img, x, y);
         this.quejas = new ArrayList<>();
+        this.puntos = puntos;
     }
 
     //Los clientes lanzan proyectiles, este metodo crea proyectiles
@@ -22,6 +24,10 @@ public class Cliente extends Entidad {
             200);
 
         quejas.add(q);
+    }
+
+    public int getPuntos(){
+        return puntos;
     }
 
     public ArrayList<Queja> getQuejas() {

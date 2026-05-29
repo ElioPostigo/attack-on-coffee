@@ -4,12 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.politecnicomalaga.attackoncoffee.Main;
@@ -24,37 +26,52 @@ import com.politecnicomalaga.attackoncoffee.model.Queja;
 public class GameScreen extends ScreenAdapter {
 
     private final Main game;
-    private final Stage stage;
+    private Stage stage;
     private SpriteBatch batch;
 
     private Barista barista;
     private final GrupoClientes grupoClientes;
     private Texture baristaImage;
     private Texture cafeImage;
+    private Texture quejaTexture;
     private OrthographicCamera camera;
     private Viewport viewport;
     private Sound explosionSound;
     private Music backgroundMusic;
+    private int puntuacion;
+
+    private BitmapFont font;
+    private Label puntuacionLabel;
 
     public GameScreen(Main game) {
-        baristaImage = new Texture("cliente.png");
+        baristaImage = new Texture("Barista.png");
         cafeImage = new Texture("cafe.png");
         this.game = game;
-        this.stage = new Stage(new ScreenViewport());
-        this.barista = new Barista(baristaImage,300,10);
-        this.grupoClientes = new GrupoClientes(4, 6, new Texture("cliente.png"), 100f, 420f, 80f, 50f, 30f, 30f);
+        this.stage = new Stage(new StretchViewport(SettingsManager.SCREEN_WIDTH, SettingsManager.SCREEN_HEIGHT));
+        this.barista = new Barista(baristaImage, 300, 10);
+        this.grupoClientes = new GrupoClientes(4, 6, new Texture("Bajo.png"), 100f, 420f, 80f, 50f, 30f, 30f);
     }
 
     @Override
-    public void show(){
+    public void show() {
         camera = new OrthographicCamera(SettingsManager.SCREEN_WIDTH, SettingsManager.SCREEN_HEIGHT);
         batch = new SpriteBatch();
         viewport = new StretchViewport(SettingsManager.SCREEN_WIDTH, SettingsManager.SCREEN_HEIGHT, camera);
         explosionSound = Gdx.audio.newSound(Gdx.files.internal("sounds/explosionSound.mp3"));
         backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/hormigueroSong.mp3"));
+        quejaTexture = new Texture("Queja.png");
+
+        puntuacion = 0;
+
+        font = new BitmapFont();
+        font.getData().setScale(2f);
+        Label.LabelStyle labelStyle = new Label.LabelStyle(font, Color.WHITE);
+        puntuacionLabel = new Label("PUNTOS: 0", labelStyle);
+        puntuacionLabel.setPosition(SettingsManager.SCREEN_WIDTH - 230, SettingsManager.SCREEN_HEIGHT - 50);
+        stage.addActor(puntuacionLabel);
 
         backgroundMusic.setLooping(true);
-        backgroundMusic.setVolume(1.2f);
+        backgroundMusic.setVolume(0.7f);
         backgroundMusic.play();
     }
 
@@ -65,13 +82,13 @@ public class GameScreen extends ScreenAdapter {
         barista.updatePosition(delta);
 
         int numCliente = 0;
-        for(FilaClientes fila: grupoClientes.getFilas()){
-            for(Cliente cliente: fila.getClientes()){
-                if(cliente.getHitbox().overlaps(barista.getHitbox())) {
+        for (FilaClientes fila : grupoClientes.getFilas()) {
+            for (Cliente cliente : fila.getClientes()) {
+                if (cliente.getHitbox().overlaps(barista.getHitbox())) {
                     backgroundMusic.stop();
                     game.setScreen(new GameOverScreen(game));
                 }
-                if(cliente.isActivo()){
+                if (cliente.isActivo()) {
                     numCliente++;
                 }
             }
@@ -84,12 +101,9 @@ public class GameScreen extends ScreenAdapter {
         for (FilaClientes fila : grupoClientes.getFilas()) {
             for (Cliente cliente : fila.getClientes()) {
                 if (cliente.isActivo()) {
-                    // Disparar quejas aleatoriamente (ejemplo: cada 2 segundos)
-                    if (Math.random() < 0.001) { // Ajusta la probabilidad según necesites
-                        cliente.lanzarQueja(cafeImage);
+                    if (Math.random() < 0.001) {
+                        cliente.lanzarQueja(quejaTexture);
                     }
-
-                    // Mover y dibujar quejas del cliente
                     for (Queja queja : cliente.getQuejas()) {
                         if (queja.isActivo()) {
                             queja.mover();
@@ -104,25 +118,28 @@ public class GameScreen extends ScreenAdapter {
             }
         }
 
-        for(Cafe cafe: barista.getCafes()){
-            for(FilaClientes fila: grupoClientes.getFilas()){
-                for(Cliente cliente: fila.getClientes()){
-                    if(cafe.getHitbox().overlaps(cliente.getHitbox()) && cafe.isActivo() && cliente.isActivo()){
+        for (Cafe cafe : barista.getCafes()) {
+            for (FilaClientes fila : grupoClientes.getFilas()) {
+                for (Cliente cliente : fila.getClientes()) {
+                    if (cafe.getHitbox().overlaps(cliente.getHitbox()) && cafe.isActivo() && cliente.isActivo()) {
                         cliente.setActivo(false);
                         cafe.setActivo(false);
-                        explosionSound.play(0.4f);
+                        puntuacion += cliente.getPuntos();
+                        explosionSound.play(0.2f);
+                        puntuacionLabel.setText("PUNTOS: " + puntuacion);
                     }
                 }
             }
         }
 
         grupoClientes.mover(delta);
+
         batch.begin();
         barista.draw(batch);
-        for(FilaClientes fila: grupoClientes.getFilas()){
-            for(Cliente cliente: fila.getClientes()){
-                if(cliente.isActivo()){
-                    batch.draw(cliente.getSprite().getTexture(),cliente.getSprite().getX(),cliente.getSprite().getY());
+        for (FilaClientes fila : grupoClientes.getFilas()) {
+            for (Cliente cliente : fila.getClientes()) {
+                if (cliente.isActivo()) {
+                    batch.draw(cliente.getSprite().getTexture(), cliente.getSprite().getX(), cliente.getSprite().getY());
                     for (Queja queja : cliente.getQuejas()) {
                         if (queja.isActivo()) {
                             batch.draw(
@@ -138,20 +155,25 @@ public class GameScreen extends ScreenAdapter {
             }
         }
         batch.end();
+
+        stage.act(delta);
+        stage.draw();
     }
 
     @Override
-    public void dispose(){
+    public void dispose() {
         baristaImage.dispose();
         batch.dispose();
         cafeImage.dispose();
         stage.dispose();
+        grupoClientes.dispose();
         if (explosionSound != null) explosionSound.dispose();
-
-        // Liberar música
         if (backgroundMusic != null) backgroundMusic.dispose();
+        quejaTexture.dispose();
+        font.dispose();
     }
 
+    @Override
     public void resize(int width, int height) {
         viewport.update(width, height, true);
     }

@@ -31,7 +31,7 @@ public class WinScreen extends ScreenAdapter {
         winImage = new Texture("win.jpeg");
         winSound = Gdx.audio.newSound(Gdx.files.internal("sounds/winSound.mp3"));
         batch = new SpriteBatch();
-        winSound.play(1f);
+        winSound.play(0.5f);
     }
 
     @Override
