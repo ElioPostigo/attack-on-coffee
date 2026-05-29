@@ -1,10 +1,13 @@
 package com.politecnicomalaga.attackoncoffee.model;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
 public class GrupoClientes {
 
     private FilaClientes[] filas;
+
+    private float velocidadHorizontal;
     private float velocidadVertical;
 
     public GrupoClientes(
@@ -19,6 +22,7 @@ public class GrupoClientes {
         float velocidadVertical
     ) {
 
+        this.velocidadHorizontal = velocidadHorizontal;
         this.velocidadVertical = velocidadVertical;
 
         filas = new FilaClientes[numFilas];
@@ -32,45 +36,62 @@ public class GrupoClientes {
                 textura,
                 xInicial,
                 y,
-                separacionHorizontal,
-                velocidadHorizontal
+                separacionHorizontal
             );
         }
     }
 
     public void mover(float delta) {
 
-        boolean bajar = false;
+        boolean tocarBorde = false;
 
-        // Movimiento horizontal
+        // Detectar bordes
         for (FilaClientes fila : filas) {
 
-            if (fila != null) {
+            for (Cliente c : fila.getClientes()) {
 
-                if (fila.moverHorizontal(delta)) {
-                    bajar = true;
+                if (c != null && c.isActivo()) {
+
+                    // Derecha
+                    if (c.getSprite().getX()
+                        + c.getSprite().getWidth()
+                        >= Gdx.graphics.getWidth()) {
+
+                        tocarBorde = true;
+                    }
+
+                    // Izquierda
+                    if (c.getSprite().getX() <= 0) {
+
+                        tocarBorde = true;
+                    }
                 }
             }
         }
 
-        // Movimiento vertical al tocar borde
-        if (bajar) {
+        // Si toca borde:
+        if (tocarBorde) {
+
+            velocidadHorizontal = -velocidadHorizontal;
 
             for (FilaClientes fila : filas) {
 
-                if (fila != null) {
+                for (Cliente c : fila.getClientes()) {
 
-                    for (Cliente c : fila.getClientes()) {
+                    if (c != null && c.isActivo()) {
 
-                        if (c != null && c.isActivo()) {
+                        c.getSprite().translateY(-velocidadVertical);
 
-                            c.getSprite().translateY(-velocidadVertical);
-
-                            c.updatePosition(delta);
-                        }
+                        c.updatePosition(delta);
                     }
                 }
             }
+        }
+
+        // Movimiento horizontal
+        for (FilaClientes fila : filas) {
+
+            fila.moverHorizontal(velocidadHorizontal, delta);
         }
     }
 
