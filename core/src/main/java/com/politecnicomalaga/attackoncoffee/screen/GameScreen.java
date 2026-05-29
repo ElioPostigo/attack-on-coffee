@@ -38,6 +38,7 @@ public class GameScreen extends ScreenAdapter {
     private Sound explosionSound;
     private Music backgroundMusic;
     private int puntuacion;
+    private Texture background;
 
     private BitmapFont font;
     private Label puntuacionLabel;
@@ -59,6 +60,7 @@ public class GameScreen extends ScreenAdapter {
         explosionSound = Gdx.audio.newSound(Gdx.files.internal("sounds/explosionSound.mp3"));
         backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/hormigueroSong.mp3"));
         quejaTexture = new Texture("Queja.png");
+        background = new Texture("background.png");
 
         puntuacion = 0;
 
@@ -134,6 +136,7 @@ public class GameScreen extends ScreenAdapter {
         grupoClientes.mover(delta);
 
         batch.begin();
+        batch.draw(background, 0, 0, SettingsManager.SCREEN_WIDTH, SettingsManager.SCREEN_HEIGHT);
         barista.draw(batch);
         for (FilaClientes fila : grupoClientes.getFilas()) {
             for (Cliente cliente : fila.getClientes()) {
@@ -170,6 +173,7 @@ public class GameScreen extends ScreenAdapter {
         if (backgroundMusic != null) backgroundMusic.dispose();
         quejaTexture.dispose();
         font.dispose();
+        background.dispose();
     }
 
     @Override
