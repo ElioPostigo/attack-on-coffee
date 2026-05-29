@@ -15,7 +15,7 @@ public class Queja extends Accion {
     @Override
     public void mover() {
         getSprite().translateY(-getVelocidad() * Gdx.graphics.getDeltaTime());
-        updatePosition(0);
+        updatePosition();
 
         if (getSprite().getY() < 0) {
             setActivo(false);
