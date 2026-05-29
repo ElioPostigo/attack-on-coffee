@@ -50,7 +50,7 @@ public class GrupoClientes {
                 for (Cliente c : fila.getClientes()) {
                     if (c != null && c.isActivo()) {
                         c.getSprite().translateY(-velocidadVertical);
-                        c.updatePosition(delta);
+                        c.updatePosition();
                     }
                 }
             }

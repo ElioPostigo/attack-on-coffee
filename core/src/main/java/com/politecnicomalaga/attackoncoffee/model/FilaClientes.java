@@ -19,7 +19,7 @@ public class FilaClientes {
         for (Cliente c : clientes) {
             if (c != null && c.isActivo()) {
                 c.getSprite().translateX(velocidad * delta);
-                c.updatePosition(delta);
+                c.updatePosition();
             }
         }
     }
