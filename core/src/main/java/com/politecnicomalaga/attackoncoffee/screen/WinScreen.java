@@ -12,15 +12,15 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.politecnicomalaga.attackoncoffee.Main;
 import com.politecnicomalaga.attackoncoffee.manager.SettingsManager;
 
-public class GameOverScreen extends ScreenAdapter {
+public class WinScreen extends ScreenAdapter {
     private final Main game;
-    private Texture gameOver;
+    private Texture winImage;
     private SpriteBatch batch;
     private OrthographicCamera camera;
     private Viewport viewport;
-    private Sound gameOverSound;
+    private Sound winSound;
 
-    public GameOverScreen(Main game) {
+    public WinScreen(Main game) {
         this.game = game;
     }
 
@@ -28,10 +28,10 @@ public class GameOverScreen extends ScreenAdapter {
     public void show() {
         camera = new OrthographicCamera(SettingsManager.SCREEN_WIDTH, SettingsManager.SCREEN_HEIGHT);
         viewport = new StretchViewport(SettingsManager.SCREEN_WIDTH, SettingsManager.SCREEN_HEIGHT, camera);
-        gameOver = new Texture("gameOver.png");
+        winImage = new Texture("win.jpeg");
+        winSound = Gdx.audio.newSound(Gdx.files.internal("sounds/winSound.mp3"));
         batch = new SpriteBatch();
-        gameOverSound = Gdx.audio.newSound(Gdx.files.internal("sounds/gameOverSound.mp3"));
-        gameOverSound.play();
+        winSound.play(0.5f);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class GameOverScreen extends ScreenAdapter {
         batch.setProjectionMatrix(camera.combined);
 
         batch.begin();
-        batch.draw(gameOver, 0, 0);
+        batch.draw(winImage, 0, 0,SettingsManager.SCREEN_WIDTH, SettingsManager.SCREEN_HEIGHT);
         batch.end();
 
         if (Gdx.input.isTouched()) {
@@ -57,9 +57,8 @@ public class GameOverScreen extends ScreenAdapter {
 
     @Override
     public void dispose() {
-        gameOver.dispose();
+        if (winSound != null) winSound.dispose();
+        winImage.dispose();
         batch.dispose();
-        if (gameOverSound != null) gameOverSound.dispose();
-
     }
 }

@@ -8,17 +8,36 @@ public class GrupoClientes {
     private final FilaClientes[] filas;
     private final float velocidadVertical;
     private float velocidadHorizontal;
+    private Texture clienteAlto;
+    private Texture clienteMedio;
 
-    public GrupoClientes(int numFilas, int clientesPorFila, Texture textura, float xInicial, float yInicial,
+    public GrupoClientes(int numFilas, int clientesPorFila, Texture clienteBajo, float xInicial, float yInicial,
                          float separacionHorizontal, float separacionVertical, float velocidadHorizontal, float velocidadVertical) {
         this.velocidadHorizontal = velocidadHorizontal;
         this.velocidadVertical = velocidadVertical;
 
         filas = new FilaClientes[numFilas];
+        clienteAlto = new Texture("Alto.png");
+        clienteMedio = new Texture("Medio.png");
 
         for (int i = 0; i < numFilas; i++) {
             float y = yInicial - (i * separacionVertical);
-            filas[i] = new FilaClientes(clientesPorFila, textura, xInicial, y, separacionHorizontal);
+            switch (i){
+                case 0:
+                    filas[i] = new FilaClientes(clientesPorFila, clienteAlto, xInicial, y, separacionHorizontal,20);
+                    break;
+                case 1:
+                    filas[i] = new FilaClientes(clientesPorFila, clienteMedio, xInicial, y, separacionHorizontal,10);
+                    break;
+                case 2:
+                    filas[i] = new FilaClientes(clientesPorFila,clienteBajo , xInicial, y, separacionHorizontal,5);
+                    break;
+                case 3:
+                    filas[i] = new FilaClientes(clientesPorFila, clienteBajo, xInicial, y, separacionHorizontal,5);
+                    break;
+                default:
+                    filas[i] = new FilaClientes(clientesPorFila, clienteBajo, xInicial, y, separacionHorizontal,5);
+            }
         }
     }
 
@@ -64,5 +83,10 @@ public class GrupoClientes {
 
     public FilaClientes[] getFilas() {
         return filas;
+    }
+
+    public void dispose(){
+        clienteAlto.dispose();
+        clienteMedio.dispose();
     }
 }
