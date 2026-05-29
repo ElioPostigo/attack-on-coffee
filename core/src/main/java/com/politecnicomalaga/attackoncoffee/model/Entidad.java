@@ -9,16 +9,12 @@ public abstract class Entidad {
 
     private final Rectangle hitbox;
     private final Sprite sprite;
-    private float velocidadX;
-    private float velocidadY;
     private boolean activo;
 
-    public Entidad(Texture img, float x, float y, float velocidadX, float velocidadY) {
+    public Entidad(Texture img, float x, float y) {
         this.sprite = new Sprite(img);
         this.sprite.setPosition(x, y);
         this.hitbox = new Rectangle(x, y, sprite.getWidth(), sprite.getHeight());
-        this.velocidadX = velocidadX;
-        this.velocidadY = velocidadY;
         this.activo = true;
     }
 
@@ -38,22 +34,6 @@ public abstract class Entidad {
 
     public Sprite getSprite() {
         return sprite;
-    }
-
-    public float getVelocidadX() {
-        return velocidadX;
-    }
-
-    public void setVelocidadX(float velocidadX) {
-        this.velocidadX = velocidadX;
-    }
-
-    public float getVelocidadY() {
-        return velocidadY;
-    }
-
-    public void setVelocidadY(float velocidadY) {
-        this.velocidadY = velocidadY;
     }
 
     public boolean isActivo() {
