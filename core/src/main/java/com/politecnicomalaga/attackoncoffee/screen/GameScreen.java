@@ -26,13 +26,12 @@ import com.politecnicomalaga.attackoncoffee.model.Queja;
 public class GameScreen extends ScreenAdapter {
 
     private final Main game;
-    private Stage stage;
-    private SpriteBatch batch;
-
-    private Barista barista;
+    private final Stage stage;
+    private final Barista barista;
     private final GrupoClientes grupoClientes;
-    private Texture baristaImage;
-    private Texture cafeImage;
+    private final Texture baristaImage;
+    private final Texture cafeImage;
+    private SpriteBatch batch;
     private Texture quejaTexture;
     private OrthographicCamera camera;
     private Viewport viewport;

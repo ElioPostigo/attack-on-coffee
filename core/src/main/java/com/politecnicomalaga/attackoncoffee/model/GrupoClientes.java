@@ -7,9 +7,9 @@ public class GrupoClientes {
 
     private final FilaClientes[] filas;
     private final float velocidadVertical;
+    private final Texture clienteAlto;
+    private final Texture clienteMedio;
     private float velocidadHorizontal;
-    private Texture clienteAlto;
-    private Texture clienteMedio;
 
     public GrupoClientes(int numFilas, int clientesPorFila, Texture clienteBajo, float xInicial, float yInicial,
                          float separacionHorizontal, float separacionVertical, float velocidadHorizontal, float velocidadVertical) {
@@ -22,21 +22,21 @@ public class GrupoClientes {
 
         for (int i = 0; i < numFilas; i++) {
             float y = yInicial - (i * separacionVertical);
-            switch (i){
+            switch (i) {
                 case 0:
-                    filas[i] = new FilaClientes(clientesPorFila, clienteAlto, xInicial, y, separacionHorizontal,20);
+                    filas[i] = new FilaClientes(clientesPorFila, clienteAlto, xInicial, y, separacionHorizontal, 20);
                     break;
                 case 1:
-                    filas[i] = new FilaClientes(clientesPorFila, clienteMedio, xInicial, y, separacionHorizontal,10);
+                    filas[i] = new FilaClientes(clientesPorFila, clienteMedio, xInicial, y, separacionHorizontal, 10);
                     break;
                 case 2:
-                    filas[i] = new FilaClientes(clientesPorFila,clienteBajo , xInicial, y, separacionHorizontal,5);
+                    filas[i] = new FilaClientes(clientesPorFila, clienteBajo, xInicial, y, separacionHorizontal, 5);
                     break;
                 case 3:
-                    filas[i] = new FilaClientes(clientesPorFila, clienteBajo, xInicial, y, separacionHorizontal,5);
+                    filas[i] = new FilaClientes(clientesPorFila, clienteBajo, xInicial, y, separacionHorizontal, 5);
                     break;
                 default:
-                    filas[i] = new FilaClientes(clientesPorFila, clienteBajo, xInicial, y, separacionHorizontal,5);
+                    filas[i] = new FilaClientes(clientesPorFila, clienteBajo, xInicial, y, separacionHorizontal, 5);
             }
         }
     }
@@ -85,7 +85,7 @@ public class GrupoClientes {
         return filas;
     }
 
-    public void dispose(){
+    public void dispose() {
         clienteAlto.dispose();
         clienteMedio.dispose();
     }

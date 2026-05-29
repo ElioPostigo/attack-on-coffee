@@ -42,7 +42,7 @@ public class WinScreen extends ScreenAdapter {
         batch.setProjectionMatrix(camera.combined);
 
         batch.begin();
-        batch.draw(winImage, 0, 0,SettingsManager.SCREEN_WIDTH, SettingsManager.SCREEN_HEIGHT);
+        batch.draw(winImage, 0, 0, SettingsManager.SCREEN_WIDTH, SettingsManager.SCREEN_HEIGHT);
         batch.end();
 
         if (Gdx.input.isTouched()) {
