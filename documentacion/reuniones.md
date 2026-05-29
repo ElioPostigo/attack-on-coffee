@@ -120,3 +120,25 @@
 - Manu se encargará de agregar música y pulir el código del proyecto.
 - Elio realizará los sprites y el resto del apartado artístico.
 - Se reorganizaron las tareas restantes para asegurar la finalización del proyecto dentro de la fecha prevista.
+
+- # 📋 Reuniones
+
+---
+
+## 📅 29/05/2026
+
+> Reunión realizada para pulir el código final del proyecto, revisar los últimos detalles y completar las funcionalidades pendientes antes de la entrega.
+
+| Miembro | Tareas realizadas |
+|---|---|
+| Elio | Organización y revisión general del proyecto, además de colaborar en la implementación del sistema de puntuación |
+| Javi | Limpieza y refactorización del código para mejorar su legibilidad y mantenimiento |
+| Manu | Revisión de código, colaboración en la implementación del sistema de puntuación y desarrollo de los distintos tipos de clientes |
+
+### ✅ Conclusiones
+
+- Se revisó y pulió el código final del proyecto.
+- Se completó la implementación y ajuste del sistema de puntuación.
+- Se añadieron los distintos niveles de clientes previstos para el juego.
+- Se realizaron las últimas tareas de limpieza y revisión del código.
+- El proyecto ha quedado finalizado y preparado para su entrega.
