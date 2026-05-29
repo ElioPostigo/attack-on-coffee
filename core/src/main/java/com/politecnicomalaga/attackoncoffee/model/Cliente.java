@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 public class Cliente extends Entidad {
 
+    private final int puntos;
     private ArrayList<Queja> quejas;
-    private int puntos;
 
-    public Cliente(Texture img, float x, float y,int puntos) {
+    public Cliente(Texture img, float x, float y, int puntos) {
         super(img, x, y);
         this.quejas = new ArrayList<>();
         this.puntos = puntos;
@@ -26,7 +26,7 @@ public class Cliente extends Entidad {
         quejas.add(q);
     }
 
-    public int getPuntos(){
+    public int getPuntos() {
         return puntos;
     }
 
